@@ -1,0 +1,29 @@
+
+import data_analysis.measurment.freq_sparam as freq_sparam
+import data_analysis.measurment.freq_spectrum as freq_spectrum
+from enum import Enum
+
+
+class MeasurmentResultType(Enum):
+    SIMPLE = 1
+    TIME = 2
+    SPRAM = 3
+    SPECTRUM = 4
+
+reistered_meas_type_dict={
+    MeasurmentResultType.SPRAM:freq_sparam.FreqSpramRes,
+    MeasurmentResultType.SPECTRUM:freq_spectrum.FreqSpectrumRes
+}
+
+def Measurment_factory(meas_type,description):
+    _class = reistered_meas_type_dict.get(meas_type,None)
+    return _class
+
+
+
+
+
+
+if __name__=="__main__":
+    meas = Measurment_factory(MeasurmentResultType.SPRAM,"test sparam")
+    print(meas.get_type())
