@@ -1,4 +1,4 @@
-from  data_analysis.measurment import freq_meas
+from . import freq_meas
 import numpy as np
 
 class sparam_data_error(BaseException):
@@ -10,10 +10,9 @@ class sparam_data_error(BaseException):
 
 class FreqSpramRes(freq_meas.FreqMeasResult):
 
-    def __init__(self, freq,data,**kwargs):
+    def __init__(self, freq,data,sparam_format,**kwargs):
 
         description=kwargs.get("description",None)
-        sparam_format=kwargs.get("sparam_format",None)
         sparam_meas=kwargs.get("sparam_meas",None)
 
         super().__init__(freq,data,description)
@@ -26,12 +25,6 @@ class FreqSpramRes(freq_meas.FreqMeasResult):
             raise sparam_data_error("unsupported data type")
 
         self.sparam_meas=sparam_meas
-
-
-
-    def get_type(self):
-        return type(FreqSpramRes)
-
 
     @property
     def as_db(self):

@@ -1,4 +1,4 @@
-from data_analysis.measurment import freq_meas
+from . import freq_meas
 
 
 class FreqSpectrumRes(freq_meas.FreqMeasResult):

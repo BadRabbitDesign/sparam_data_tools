@@ -6,4 +6,4 @@ Collection of data processing tools
 * Time domain
 
 ## Build Distribution Files
-python setup.py sdist
+py -3  setup.py sdist

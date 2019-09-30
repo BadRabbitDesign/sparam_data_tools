@@ -1,6 +1,6 @@
 
-import data_analysis.measurment.freq_sparam as freq_sparam
-import data_analysis.measurment.freq_spectrum as freq_spectrum
+from . import freq_sparam 
+from . import freq_spectrum
 from enum import Enum
 
 
@@ -18,12 +18,3 @@ reistered_meas_type_dict={
 def Measurment_factory(meas_type,description):
     _class = reistered_meas_type_dict.get(meas_type,None)
     return _class
-
-
-
-
-
-
-if __name__=="__main__":
-    meas = Measurment_factory(MeasurmentResultType.SPRAM,"test sparam")
-    print(meas.get_type())

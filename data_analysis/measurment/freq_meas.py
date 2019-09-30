@@ -1,8 +1,5 @@
-from data_analysis.measurment import base_measurment
+from . import base_measurment
 import numpy as np
-
-
-
 
 
 class FreqMeasResult(base_measurment.BaseMeasurmentResult):
@@ -88,12 +85,11 @@ class FreqMeasResult(base_measurment.BaseMeasurmentResult):
         test_fn = TEST_FN_dict.get(action)
         test_res = test_fn(self.data,test_limit,where=(np.isnan(test_limit)==False))
 
-        return {}
+        return test_res
 
 
 
-    def get_type(self):
-        pass
+ 
 
 
 

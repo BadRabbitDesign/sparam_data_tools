@@ -1,3 +1,4 @@
 {
-    "python.pythonPath": "C:\\tools\\Python\\Python37-32\\python.exe"
+    "python.pythonPath": "C:\\tools\\Python\\Python37-32\\python.exe",
+    "python.autoComplete.extraPaths": ["C:\\work\\SW\\Projects\\python\\sparam_data_tools\\data_analysis"]
 }
