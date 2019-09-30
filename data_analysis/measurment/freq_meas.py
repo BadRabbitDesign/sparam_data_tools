@@ -52,7 +52,7 @@ class FreqMeasResult(base_measurment.BaseMeasurmentResult):
 
         return _data
 
-    def add_test_mask(self,id,mask):
+    def add_test_mask(self,id,mask,test_criteria,description):
         """
         add a frequency test mask.
         id - dictionary key to use
@@ -62,7 +62,7 @@ class FreqMeasResult(base_measurment.BaseMeasurmentResult):
         _f_mask=_mask[0]
         _l_mask=_mask[1]
         _mask= np.interp(self.freq, _f_mask, _l_mask, left=np.nan, right=np.nan, period=None)
-        self.test_masks[id] = test_mask (_mask)
+        self.test_masks[id] = FreqMeasResult.test_mask (_mask,test_criteria,description)
 
 
     def get_mask(self,id):
@@ -70,10 +70,10 @@ class FreqMeasResult(base_measurment.BaseMeasurmentResult):
         get a previously defined mask by its id
         """
         test_limit = self.test_masks.get(id,None)
-        idx = np.where(np.isnan(test_limit)==False)
+        idx = np.where(np.isnan(test_limit.mask)==False)
 
         f = np.take(self.freq,idx)[0]
-        l = np.take(test_limit,idx)[0]
+        l = np.take(test_limit.mask,idx)[0]
         return f,l
 
     def apppy_mask(self,id=None,action="lte"):
